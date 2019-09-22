@@ -32,10 +32,12 @@ RUN cp /app_file/wb_pipeline_FCD /root/matlab_script/
 RUN cp /app_file/wb_pipeline_FOCA /root/matlab_script/
 RUN chmod 777 -R /root/matlab_script/
 
+RUN mkdir -p /file_buf
 RUN mkdir -p /script
 RUN cd /script
 
 RUN git clone https://github.com/fanhantianxia/wb_pipeline_fmriprepro.git 
+ADD brain_mask.nii /file_buf/brain_mask.nii
 ADD wb_pipeline_calcFCD.sh /root/wb_pipeline_calcFCD.sh
 ADD wb_pipeline_calcFOCA.sh /root/wb_pipeline_calcFOCA.sh
 RUN chmod a+x /root/
