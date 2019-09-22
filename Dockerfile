@@ -39,7 +39,7 @@ RUN cd /script
 RUN git clone https://github.com/fanhantianxia/wb_pipeline_fmriprepro.git 
 ADD brain_mask.nii /file_buf/brain_mask.nii
 ADD wb_pipeline_calcFCD.sh /root/wb_pipeline_calcFCD.sh
-#ADD wb_pipeline_calcFOCA.sh /root/wb_pipeline_calcFOCA.sh
+ADD wb_pipeline_calcFOCA.sh /root/wb_pipeline_calcFOCA.sh
 RUN chmod a+x /root/
 RUN rm -rf /script
-#ENTRYPOINT ["/root/main.sh"]
+ENTRYPOINT ["/root/"]
