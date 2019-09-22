@@ -7,7 +7,7 @@ mkdir -p /file_buf
 cd /file_buf
 git clone https://github.com/fanhantianxia/wb_pipeline_fmriprepro.git /file_buf
 
-:<<!
+:<<!   ################################################
 echo 'display Input_file_TreeGraph'
 cd /data
 tree
@@ -23,11 +23,11 @@ echo 'display BIDS_file_TreeGraph'
 cd /data/data_BIDS
 tree
 sleep 3s
+!  ###################################
 
 echo 'inspect fmriprep version....'
 fmriprep --version
 sleep 3s
-!
 
 mkdir /DataBuf 
 fmriprep /data/data_BIDS $2 participant -w /DataBuf --no-submm-recon --fs-no-reconall
