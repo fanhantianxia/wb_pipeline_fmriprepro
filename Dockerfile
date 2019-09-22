@@ -24,7 +24,6 @@ RUN ./install -mode silent -agreeToLicense yes
 RUN cd /
 RUN rm -Rf /mcr-install
 
-
 RUN mkdir -p /app_file
 RUN cd /app_file
 RUN git clone https://github.com/fanhantianxia/wb_fmri_pipeline_tool.git /app_file  #tool_dir
@@ -35,8 +34,9 @@ RUN cp /app_file/wb_pipeline_FOCA /root/matlab_script/
 RUN mkdir -p /script
 RUN cd /script
 
-RUN git clone https://github.com/fanhantianxia/wb_fmri_pipeline.git 
-ADD main.sh /root/main.sh
-RUN chmod a+x /root/main.sh
+RUN git clone https://github.com/fanhantianxia/wb_pipeline_fmriprepro.git 
+ADD wb_pipeline_calcFCD.sh /root/wb_pipeline_calcFCD.sh
+ADD wb_pipeline_calcFOCA.sh /root/wb_pipeline_calcFOCA.sh
+RUN chmod a+x /root/
 RUN rm -rf /script
-ENTRYPOINT ["/root/main.sh"]
+#ENTRYPOINT ["/root/main.sh"]
