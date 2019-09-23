@@ -38,10 +38,10 @@ RUN cd /script
 
 RUN git clone https://github.com/fanhantianxia/wb_pipeline_fmriprepro.git 
 ADD brain_mask.nii /file_buf/brain_mask.nii
-ADD wb_pipeline_calcFCD.sh /bin/wb_pipeline_calcFCD.sh
-ADD wb_pipeline_calcFOCA.sh /bin/wb_pipeline_calcFOCA.sh
-ADD wb_pipeline_calcFMRIPREP.sh /bin/wb_pipeline_calcFMRIPREP.sh
-#ADD wb_pipeline_calcALL.sh /root/wb_pipeline_calcALL.sh
+ADD wb_pipeline_calcFCD.sh /root/wb_pipeline_calcFCD.sh
+ADD wb_pipeline_calcFOCA.sh /root/wb_pipeline_calcFOCA.sh
+ADD wb_pipeline_calcFMRIPREP.sh /root/wb_pipeline_calcFMRIPREP.sh
+ADD wb_pipeline_calcALL.sh /root/wb_pipeline_calcALL.sh
 
 RUN chmod 777 -R /bin/
 RUN rm -rf /script
