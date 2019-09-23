@@ -3,32 +3,19 @@ input_dir=$1  # /data
 output_dir=$2
 combs_project_id=$3
 
-mkdir -p /file_buf
-cd /file_buf
-git clone https://github.com/fanhantianxia/wb_fmri_pipeline.git /file_buf
+echo '------Input_Config START----------'
+echo 'input_dir='$input_dir
+echo 'output_dir='$output_dir
+echo 'combs_project_id='$combs_project_id
+echo '-------Input_Config END-----------'
 
-echo 'display Input_file_TreeGraph'
-cd /data
-tree
-cp /data/config.json /file_buf 
-sleep 3s
-
-echo 'start to convert,please wait...'
-cd /file_buf
-python nii2bids.py #-d /data 
-sleep 3s
-
-echo 'display BIDS_file_TreeGraph'
-cd /data/data_BIDS
-tree
-sleep 3s
 
 echo 'inspect fmriprep version....'
 fmriprep --version
 sleep 3s
 
 mkdir /DataBuf 
-fmriprep /data/data_BIDS $2 participant -w /DataBuf --no-submm-recon --fs-no-reconall
+fmriprep input_dir output_dir participant -w /DataBuf --no-submm-recon --fs-no-reconall
 
 #--matlab config--
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/MATLAB/MATLAB_Runtime/v90/runtime/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v90/bin/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v90/sys/os/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v90/sys/java/jre/glnxa64/jre/lib/amd64/native_threads:/usr/local/MATLAB/MATLAB_Runtime/v90/sys/java/jre/glnxa64/jre/lib/amd64/server:/usr/local/MATLAB/MATLAB_Runtime/v90/sys/java/jre/glnxa64/jre/lib/amd64
@@ -36,17 +23,10 @@ export XAPPLRESDIR=/usr/local/MATLAB/MATLAB_Runtime/v90/X11/app-defaults
 export MCR_CACHE_VERBOSE=true
 export MCR_CACHE_ROOT=/tmp
 
-echo $LD_LIBRARY_PATH
-echo $XAPPLRESDIR
-echo $MCR_CACHE_VERBOSE
-echo $MCR_CACHE_ROOT
 
-mkdir -p /app_file
-cd /app_file
-git clone https://github.com/fanhantianxia/wb_fmri_pipeline_tool.git /app_file
-mkdir /root/matlab_script/
-cp /app_file/wb_pipeline_FCD /root/matlab_script/
-cp /app_file/wb_pipeline_FOCA /root/matlab_script/
+mkdir -p /file_buf
+cd /file_buf
+git clone https://github.com/fanhantianxia/wb_pipeline_fmriprepro.git /file_buf
 
 mkdir /nit  
 find /out/fmriprep -type f -name "*desc-preproc_bold.nii.gz" | xargs cp -t  /nit
