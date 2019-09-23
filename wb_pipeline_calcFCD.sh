@@ -4,9 +4,9 @@ input_dir=$1  # /data
 output_dir=$2
 combs_project_id=$3
 
-FCD_Thresold = $4    #0.6
-FCD_TR = $5          #2
-FCD_ConnectType = $6 #0
+FCD_Thresold=$4    #0.6
+FCD_TR=$5          #2
+FCD_ConnectType=$6 #0
 
 echo $FCD_Thresold
 echo $FCD_TR
