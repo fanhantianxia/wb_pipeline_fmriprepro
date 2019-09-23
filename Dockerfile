@@ -41,6 +41,6 @@ ADD brain_mask.nii /file_buf/brain_mask.nii
 ADD wb_pipeline_calcFCD.sh /root/wb_pipeline_calcFCD.sh
 ADD wb_pipeline_calcFOCA.sh /root/wb_pipeline_calcFOCA.sh
 
-RUN chmod a+x /root/
+RUN chmod 777 -R /root/
 RUN rm -rf /script
 #ENTRYPOINT ["/root/main.sh"]
