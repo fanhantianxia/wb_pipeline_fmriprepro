@@ -3,10 +3,12 @@
 input_dir=$1  # /data
 output_dir=$2
 combs_project_id=$3
-
 FCD_Thresold=$4    #0.6
 FCD_TR=$5          #2
 FCD_ConnectType=$6 #0
+
+echo '************** wb_pipeline_calcFCD START *******************'
+sleep 1s
 
 echo '-----------Input_Config_Start--------------'
 echo 'input_dir='$input_dir
@@ -15,7 +17,7 @@ echo 'combs_project_id='$combs_project_id
 echo 'FCD_Thresold='$FCD_Thresold
 echo 'FCD_TR='$FCD_TR
 echo 'FCD_ConnectType='$FCD_ConnectType
-echo '------------Input_Config_END---------------'
+echo '------------Input_Config_End---------------'
 sleep 3s
 
 #--matlab config--
@@ -28,4 +30,4 @@ export MCR_CACHE_ROOT=/tmp
 /root/matlab_script/wb_pipeline_FCD $input_dir $output_dir /file_buf/brain_mask.nii $FCD_Thresold $FCD_TR $FCD_ConnectType 
 #[Thresold] [TR] [ConnectType]
 
-echo 'END'
+echo '************** wb_pipeline_calcFCD END *******************'
