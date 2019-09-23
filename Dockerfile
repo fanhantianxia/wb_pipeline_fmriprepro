@@ -1,4 +1,4 @@
-FROM fanhan/wb_fmriprep:latest
+FROM daocloud.io/fanhan/wb_fmriprep:latest
 MAINTAINER Yufan Zhang <zyf15816794709@163.com>
 
 RUN apt-get update && apt-get install -y python-dev python-setuptools python-numpy python-scipy zlib1g-dev python-matplotlib python-nose 
