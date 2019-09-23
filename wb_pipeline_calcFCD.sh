@@ -1,4 +1,5 @@
 #!/bin/bash
+:<<eof
 input_dir=$1  # /data
 output_dir=$2
 combs_project_id=$3
@@ -20,5 +21,5 @@ export MCR_CACHE_ROOT=/tmp
 #mkdir output_dir/FCD  #FCD输出文件夹
 /root/matlab_script/wb_pipeline_FCD $input_dir $output_dir /file_buf/brain_mask.nii $FCD_Thresold $FCD_TR FCD_ConnectType 
 #[Thresold] [TR] [ConnectType]
-
-echo 'END'
+eof
+echo 'print_END'
