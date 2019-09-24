@@ -1,5 +1,7 @@
 #!/bin/bash
 
+error_type=0 
+
 input_dir=$1  # /data
 output_dir=$2
 combs_project_id=$3
@@ -10,14 +12,33 @@ FCD_ConnectType=$6 #0
 echo '************** wb_pipeline_calcFCD START *******************'
 sleep 1s
 
-echo '-----------Input_Config_Start--------------'
 echo 'input_dir='$input_dir
 echo 'output_dir='$output_dir
 echo 'combs_project_id='$combs_project_id
-echo 'FCD_Thresold='$FCD_Thresold
+
+if $FCD_Thresold>=0 
+  then
+  echo 'FCD_Thresold='$FCD_Thresold
+elif $FCD_Thresold<=1   
+  then
+  echo 'FCD_Thresold='$FCD_Thresold
+else
+  echo '********FAILED********'
+  error_type=1 
+
 echo 'FCD_TR='$FCD_TR
-echo 'FCD_ConnectType='$FCD_ConnectType
-echo '------------Input_Config_End---------------'
+
+if $FCD_ConnectType=0
+  then
+  echo '静态'
+elif $FCD_ConnectType=1
+  then
+  echo '动态'
+else
+  echo '********FAILED********'
+  error_type=1 
+fi
+
 sleep 3s
 
 #--matlab config--
@@ -30,4 +51,5 @@ export MCR_CACHE_ROOT=/tmp
 /root/matlab_script/wb_pipeline_FCD $input_dir $output_dir /file_buf/brain_mask.nii $FCD_Thresold $FCD_TR $FCD_ConnectType 
 #[Thresold] [TR] [ConnectType]
 
-echo '************** wb_pipeline_calcFCD END *******************'
+echo '********SUCCESS********'
+echo '********FAILED********'
