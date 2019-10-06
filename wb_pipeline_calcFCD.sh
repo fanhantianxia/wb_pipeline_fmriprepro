@@ -9,7 +9,8 @@ FCD_ConnectType=$7 #0
 
 
 #workdir=/home/yufan/Desktop/FCD/data_buf  #debug route
-workdir=/root/FCD/data_buf  #
+#echo '[DEBUG]'$workdir
+workdir=/root/FCD/data_buf  
 
 
 echo '---------------------------------------------'
@@ -21,42 +22,44 @@ echo 'Check all inputs......'
 
 #######--Check BrainMask--#######
 echo $FCD_BrainMask_option
-if test $FCD_BrainMask_option = "BrainMask_65X77X45" 
+if test $FCD_BrainMask_option = "BrainMask_65x77x45" 
    then 
-   FCD_BrainMask_dir=/file_buf/BrainMask_65X77X45.nii
-elif test $FCD_BrainMask_option = "BrainMask_53X63X46" 
+   FCD_BrainMask_dir=/file_buf/BrainMaskFile/BrainMask_65X77X45.nii
+elif test $FCD_BrainMask_option = "BrainMask_53x63x46" 
    then 
-   FCD_BrainMask_dir=/file_buf/BrainMask_53X63X46.nii
-elif test $FCD_BrainMask_option = "BrainMask_61X73X41" 
+   FCD_BrainMask_dir=/file_buf/BrainMaskFile/BrainMask_53X63X46.img
+elif test $FCD_BrainMask_option = "BrainMask_61x73x61" 
    then 
-   FCD_BrainMask_dir=/file_buf/BrainMask_61X73X41.nii
+   FCD_BrainMask_dir=/file_buf/BrainMaskFile/BrainMask_61X73X41.img
 elif [ -f $FCD_BrainMask_option ]
    then 
    FCD_BrainMask_dir=$FCD_BrainMask_option
 else
-   echo 'The specified template could not be found'
+   echo '[ERROR] The specified template could not be found, please try again!'
+   echo '********FAILED********'
+   exit #exit whole process
 fi
-#echo '[DEBUG]FCD_BrainMask_dir='$FCD_BrainMask_dir #debug
+#echo '[DEBUG] FCD_BrainMask_dir='$FCD_BrainMask_dir #debug
 
 
 #######--Check Thresold--#######
 if test -z "$FCD_Thresold" ;then  #is empty
    FCD_Thresold=0.6
-   echo 'Using default FCD Thresold.'
+   echo '[Warning]Using default FCD Thresold.'
 elif test $FCD_Thresold = "[]" ;then  #is equal
    FCD_Thresold=0.6
-   echo 'Using default FCD Thresold.'
+   echo '[Warning]Using default FCD Thresold.'
 else # >1 || <0 
    if [ `echo ${FCD_Thresold} | awk -v tem="1.0" '{print($1>=tem)? "1":"0"}'` -eq "1" ] # >=1 
    then 
-      echo 'Input FCD Thresold is invalid.'
+      echo '[ERROR] Input FCD Thresold is invalid.'
       FCD_Thresold=0.6
-      echo 'Using default FCD Thresold.'
+      echo '[Warning] Using default FCD Thresold.'
    elif [ `echo ${FCD_Thresold} | awk -v tem="0.0" '{print($1<=tem)? "1":"0"}'` -eq "1" ] # <=0
    then
-      echo 'Input FCD Thresold is invalid.'
+      echo '[ERROR] Input FCD Thresold is invalid.'
       FCD_Thresold=0.6
-      echo 'Using default FCD Thresold.'
+      echo '[Warning] Using default FCD Thresold.'
    fi
 fi
 echo 'FCD_Thresold='$FCD_Thresold
@@ -65,16 +68,16 @@ echo 'FCD_Thresold='$FCD_Thresold
 #######--Check TR--#######
 if test -z "$FCD_TR" ;then  #is empty
    FCD_TR=2
-   echo 'Using default FCD TR.'
+   echo '[Warning] Using default FCD TR.'
 elif test $FCD_TR = "[]" ;then  #is equal
    FCD_TR=2
-   echo 'Using default FCD TR.'
+   echo '[Warning] Using default FCD TR.'
 else
    if [ `echo ${FCD_TR} | awk -v tem="0.0" '{print($1<=tem)? "1":"0"}'` -eq "1" ] # <=0
    then
-      echo 'Input FCD TR is invalid.'
+      echo '[ERROR] Input FCD TR is invalid.'
       FCD_TR=2
-      echo 'Using default FCD TR.'
+      echo '[Warning] Using default FCD TR.'
    fi
 fi
 echo 'FCD_TR='$FCD_TR
@@ -83,20 +86,20 @@ echo 'FCD_TR='$FCD_TR
 #######--Check ConnectType--#######
 if test -z "$FCD_ConnectType" ;then  #is empty
    FCD_ConnectType=0
-   echo 'Using default FCD ConnectType.'
+   echo '[Warning] Using default FCD ConnectType.'
 elif test $FCD_TR = "[]" ;then  #is equal
    FCD_ConnectType=0
-   echo 'Using default FCD ConnectType.'
+   echo '[Warning] Using default FCD ConnectType.'
 fi
 
 if [ "$FCD_ConnectType" -eq 0 ];then
-   echo 'ConnectType=static'
+   echo '[Warning] ConnectType=static'
 elif [ "$FCD_ConnectType" -eq 1 ];then
-   echo 'ConnectType=dynamic'
+   echo '[Warning] ConnectType=dynamic'
 else
-   echo 'Input ConnectType is invalid.'
+   echo '[ERROR] Input ConnectType is invalid.'
    FCD_ConnectType=0
-   echo 'Using default FCD ConnectType.'
+   echo '[Warning] Using default FCD ConnectType.'
    echo 'ConnectType=dynamic'
 fi
 
@@ -121,7 +124,7 @@ cd $workdir
 #first unzip
 for SingleZip in ${array[@]}
 do
-   #echo '[DEBUG]'$SingleZip #debug
+   #echo '[DEBUG] '$SingleZip #debug
    unzip $SingleZip -d $workdir #input_dir connect to workdir
 done
   
@@ -136,8 +139,8 @@ do
 
    if [ `ls ./$InputFile | wc -c` -eq 0 ] #check if file exits
    then 
-     echo "file is null"
-     echo "Fail to load file:"$InputFile
+     echo "[Warning] file is null"
+     echo "[Warning] Fail to load file:"$InputFile
      arr[Skipped_FileNum]=$InputFile
      let Skipped_FileNum++
    else
