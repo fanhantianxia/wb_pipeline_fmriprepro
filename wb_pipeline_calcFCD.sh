@@ -35,7 +35,7 @@ elif [ -f $FCD_BrainMask_option ]
    then 
    FCD_BrainMask_dir=$FCD_BrainMask_option
 else
-   echo '[ERROR] The specified template could not be found, please try again!'
+   echo '[ERROR] Invalid format or contents of BrainMask_options, please try again!'
    echo '********FAILED********'
    exit #exit whole process
 fi
