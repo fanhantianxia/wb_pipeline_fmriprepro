@@ -21,7 +21,9 @@ echo "${time}"
 #check all inputs
 echo 'Check all inputs......'
 
-/usr/local/miniconda/bin/fmriprep --version
+cd /usr/local/miniconda/bin/
+fmriprep --version
+
 :<<!
 if test -z "$preprocessing_options" 
    then
