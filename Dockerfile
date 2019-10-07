@@ -1,5 +1,5 @@
-#FROM daocloud.io/fanhan/wb_fmriprep:latest
-FROM poldracklab/fmriprep
+FROM fanhantianxia/wb_fmriprepro_basis
+#FROM poldracklab/fmriprep
 MAINTAINER Yufan Zhang <zyf15816794709@163.com>
 
 RUN fmriprep --version
