@@ -22,7 +22,6 @@ echo "${time}"
 echo 'Check all inputs......'
 
 #######--Check BrainMask--#######
-echo $FCD_BrainMask_option
 if test $FCD_BrainMask_option = "BrainMask_65x77x45" 
    then 
    FCD_BrainMask_dir=/file_buf/BrainMaskFile/BrainMask_65X77X45.nii
