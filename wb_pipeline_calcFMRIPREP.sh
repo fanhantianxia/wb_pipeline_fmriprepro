@@ -21,7 +21,7 @@ echo "${time}"
 #check all inputs
 echo 'Check all inputs......'
 
-fmriprep --version
+/usr/local/miniconda/bin/fmriprep --version
 
 if test -z "$preprocessing_options" 
    then
@@ -117,7 +117,7 @@ do
      let Skipped_FileNum++
    else
      mkdir -p $output_dir/FMRIPREP/$InputFile #position of result 
-     fmriprep $workdir/$InputFile $output_dir/FMRIPREP/$InputFile participant -w /DataBuf $preprocessing_options_content $Surface_preprocessing_options_content $UserOption01 $UserOption02 $UserOption03 $UserOption04
+     /usr/local/miniconda/bin/fmriprep $workdir/$InputFile $output_dir/FMRIPREP/$InputFile participant -w /DataBuf $preprocessing_options_content $Surface_preprocessing_options_content $UserOption01 $UserOption02 $UserOption03 $UserOption04
    fi 
 done
 
