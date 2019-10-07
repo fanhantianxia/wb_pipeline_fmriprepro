@@ -120,11 +120,7 @@ else
    echo '********FAILED********'
    exit #exit whole process
 fi
-
 echo 'preprocessing_options_content='$preprocessing_options_content
-
-
-
 
 
 if test -z "$Surface_preprocessing_options" 
@@ -200,9 +196,7 @@ do
      let Skipped_FileNum++
    else
      mkdir -p $output_dir/FMRIPREP/$InputFile
-     fmriprep $workdir/$InputFile $output_dir/FMRIPREP/$InputFile participant -w /DataBuf --no-submm-recon --fs-no-reconall
-
-
+     fmriprep $workdir/$InputFile $output_dir/FMRIPREP/$InputFile participant -w /DataBuf $preprocessing_options_content $Surface_preprocessing_options_content
    fi 
 done
 
@@ -230,3 +224,23 @@ mkdir -p $output_dir/FOCA  #FOCA输出文件夹
 /root/matlab_script/wb_pipeline_FOCA /nit/nit_Input $output_dir/FOCA/$InputFile $BrainMask_dir $FCDandFOCA_TR
 
 
+echo '------------------------'
+if test -z "$Skipped_FileNum"
+then
+   echo '********SUCCESS********'
+elif test $Skipped_FileNum = $ZipNum
+then
+   echo '********FAILED********'
+else
+   echo '********CalculatedSubjects********' 
+   let CalculatedNum=$ZipNum-$Skipped_FileNum
+   echo 'No. of Calculated Subjects:'$CalculatedNum
+   echo '********SkippedSubjects********'
+   echo 'No. of Skipped Subjects:'$Skipped_FileNum
+   
+   for value in ${arr[@]}
+   do
+     echo 'Skipped_filename:'$value
+   done
+   echo '********SUCCESS********'
+fi
