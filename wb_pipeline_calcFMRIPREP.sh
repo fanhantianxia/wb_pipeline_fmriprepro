@@ -22,7 +22,7 @@ echo "${time}"
 echo 'Check all inputs......'
 
 /usr/local/miniconda/bin/fmriprep --version
-
+:<<!
 if test -z "$preprocessing_options" 
    then
    preprocessing_options_content=
@@ -142,3 +142,4 @@ else
 
    echo '********SUCCESS********'
 fi
+!
