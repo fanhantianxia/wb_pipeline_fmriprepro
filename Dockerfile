@@ -43,5 +43,5 @@ ADD wb_pipeline_calcFOCA.sh /root/wb_pipeline_calcFOCA.sh
 ADD wb_pipeline_calcFMRIPREP.sh /root/wb_pipeline_calcFMRIPREP.sh
 ADD wb_pipeline_calcALL.sh /root/wb_pipeline_calcALL.sh
 
-RUN chmod 777 -R /bin/
+RUN chmod 777 -R /root/
 RUN rm -rf /script
