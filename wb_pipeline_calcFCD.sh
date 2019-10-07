@@ -87,7 +87,7 @@ echo 'FCD_TR='$FCD_TR
 if test -z "$FCD_ConnectType" ;then  #is empty
    FCD_ConnectType=0
    echo '[Warning] Using default FCD ConnectType.'
-elif test $FCD_TR = "[]" ;then  #is equal
+elif test $FCD_ConnectType = "[]" ;then  #is equal
    FCD_ConnectType=0
    echo '[Warning] Using default FCD ConnectType.'
 fi
