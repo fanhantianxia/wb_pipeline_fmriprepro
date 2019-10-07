@@ -1,8 +1,12 @@
 FROM daocloud.io/fanhan/wb_fmriprep:latest
 MAINTAINER Yufan Zhang <zyf15816794709@163.com>
 
+RUN /usr/local/miniconda/bin/fmriprep --version
+
 RUN apt-get update && apt-get install -y python-dev python-setuptools python-numpy python-scipy zlib1g-dev python-matplotlib python-nose 
-RUN easy_install pip
+#RUN easy_install pip
+
+RUN /usr/local/miniconda/bin/fmriprep --version
 
 RUN apt-get install tree
 RUN pip install nibabel
@@ -12,6 +16,8 @@ RUN apt-get -y install git
 RUN apt-get install -y libpng-dev libfreetype6-dev pkg-config zip python-vtk
 RUN mkdir /mcr-install
 WORKDIR /mcr-install
+
+RUN /usr/local/miniconda/bin/fmriprep --version
 
 #download matlab runtime
 RUN apt-get install -y wget
