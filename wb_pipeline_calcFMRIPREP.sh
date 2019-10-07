@@ -75,15 +75,6 @@ echo 'Surface_preprocessing_options_content='$Surface_preprocessing_options_cont
 echo 'Start Project......'
 echo 'Project ID:'$combs_project_id
 
-:<<!
-[output_spaces_options]
---output_spaces MNI152Lin
---output_spaces MNI152NLin2009cAsym   #default
---output_spaces MNI152NLin6Asym
---output_spaces MNI152NLin6Sym
-!
-
-
 #loading data and calculating
 echo 'loading data and calculating......'
 string=$input_dir
