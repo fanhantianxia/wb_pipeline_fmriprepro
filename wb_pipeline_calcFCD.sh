@@ -135,8 +135,9 @@ dir=$(ls -l $workdir  |awk '/^d/ {print $NF}') #give all files name in workdir
 for InputFile in $dir
 do
    let ZipNum++
+   echo '------------------------'
    echo 'No. of subjects:'$ZipNum
-
+   
    if [ `ls ./$InputFile | wc -c` -eq 0 ] #check if file exits
    then 
      echo "[Warning] file is null"
