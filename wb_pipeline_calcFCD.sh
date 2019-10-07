@@ -10,6 +10,7 @@ FCD_ConnectType=$7 #0
 
 #workdir=/home/yufan/Desktop/FCD/data_buf  #debug route
 #echo '[DEBUG]'$workdir
+mkdir /root/FCD/data_buf 
 workdir=/root/FCD/data_buf  
 
 
@@ -45,10 +46,10 @@ fi
 #######--Check Thresold--#######
 if test -z "$FCD_Thresold" ;then  #is empty
    FCD_Thresold=0.6
-   echo '[Warning]Using default FCD Thresold.'
+   echo '[Warning] Using default FCD Thresold.'
 elif test $FCD_Thresold = "[]" ;then  #is equal
    FCD_Thresold=0.6
-   echo '[Warning]Using default FCD Thresold.'
+   echo '[Warning] Using default FCD Thresold.'
 else # >1 || <0 
    if [ `echo ${FCD_Thresold} | awk -v tem="1.0" '{print($1>=tem)? "1":"0"}'` -eq "1" ] # >=1 
    then 
@@ -93,9 +94,9 @@ elif test $FCD_TR = "[]" ;then  #is equal
 fi
 
 if [ "$FCD_ConnectType" -eq 0 ];then
-   echo '[Warning] ConnectType=static'
+   echo 'ConnectType=static'
 elif [ "$FCD_ConnectType" -eq 1 ];then
-   echo '[Warning] ConnectType=dynamic'
+   echo 'ConnectType=dynamic'
 else
    echo '[ERROR] Input ConnectType is invalid.'
    FCD_ConnectType=0
