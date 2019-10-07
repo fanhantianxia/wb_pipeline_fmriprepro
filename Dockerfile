@@ -1,4 +1,4 @@
-FROM fanhantianxia/wb_fmriprepro_basis
+FROM wb_cloudhub/wb_fmriprepro_basis:latest
 #FROM poldracklab/fmriprep
 MAINTAINER Yufan Zhang <zyf15816794709@163.com>
 
