@@ -10,7 +10,7 @@ FCD_ConnectType=$7 #0
 
 #workdir=/home/yufan/Desktop/FCD/data_buf  #debug route
 #echo '[DEBUG]'$workdir
-mkdir /root/FCD/data_buf 
+mkdir -p /root/FCD/data_buf 
 workdir=/root/FCD/data_buf  
 
 
@@ -152,7 +152,7 @@ do
      cd .. #back to workdir
 
      #echo 'caluFCD'
-     mkdir $output_dir/FCD/$InputFile #position of result 
+     mkdir -p $output_dir/FCD/$InputFile #position of result 
      /root/matlab_script/wb_pipeline_FCD $workdir/$InputFile $output_dir/FCD/$InputFile $FCD_BrainMask_dir $FCD_Thresold $FCD_TR $FCD_ConnectType   
    fi 
 done
