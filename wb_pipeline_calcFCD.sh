@@ -24,13 +24,13 @@ echo 'Check all inputs......'
 #######--Check BrainMask--#######
 if test $FCD_BrainMask_option = "BrainMask_65x77x45" 
    then 
-   FCD_BrainMask_dir=/file_buf/BrainMaskFile/BrainMask_65X77X45.nii
+   FCD_BrainMask_dir=/file_buf/BrainMaskFile/BrainMask_65x77x45.nii
 elif test $FCD_BrainMask_option = "BrainMask_53x63x46" 
    then 
-   FCD_BrainMask_dir=/file_buf/BrainMaskFile/BrainMask_53X63X46.img
+   FCD_BrainMask_dir=/file_buf/BrainMaskFile/BrainMask_53x63x46.img
 elif test $FCD_BrainMask_option = "BrainMask_61x73x61" 
    then 
-   FCD_BrainMask_dir=/file_buf/BrainMaskFile/BrainMask_61X73X41.img
+   FCD_BrainMask_dir=/file_buf/BrainMaskFile/BrainMask_61x73x41.img
 elif [ -f $FCD_BrainMask_option ]
    then 
    FCD_BrainMask_dir=$FCD_BrainMask_option
