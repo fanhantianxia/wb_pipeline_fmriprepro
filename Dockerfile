@@ -2,6 +2,7 @@ FROM daocloud.io/fanhan/wb_fmriprepro_basis:master-560f8d4
 #FROM daocloud.io/fanhan/wb_fmriprep
 MAINTAINER Yufan Zhang <zyf15816794709@163.com>
 
+WORKDIR /tmp/
 ENTRYPOINT ["/usr/local/miniconda/bin/fmriprep"] 
 #RUN /usr/local/miniconda/bin/fmriprep --version
 ARG BUILD_DATE
