@@ -3,7 +3,7 @@
 FROM daocloud.io/fanhan/wb_fmriprep
 MAINTAINER Yufan Zhang <zyf15816794709@163.com>
 
-RUN fmriprep --version
+#RUN fmriprep --version
 
 RUN apt-get update && apt-get install -y python-dev python-setuptools python-numpy python-scipy zlib1g-dev python-matplotlib python-nose 
 RUN easy_install pip
