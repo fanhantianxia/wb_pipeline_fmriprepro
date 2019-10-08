@@ -3,6 +3,17 @@ FROM daocloud.io/fanhan/wb_fmriprepro_basis:latest
 MAINTAINER Yufan Zhang <zyf15816794709@163.com>
 
 RUN /usr/local/miniconda/bin/fmriprep --version
+ARG BUILD_DATE
+ARG VCS_REF
+ARG VERSION
+LABEL org.label-schema.build-date=$BUILD_DATE \
+      org.label-schema.name="fMRIPrep" \
+      org.label-schema.description="fMRIPrep - robust fMRI preprocessing tool" \
+      org.label-schema.url="http://fmriprep.org" \
+      org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.vcs-url="https://github.com/poldracklab/fmriprep" \
+      org.label-schema.version=$VERSION \
+      org.label-schema.schema-version="1.0"
 
 RUN apt-get update && apt-get install -y python-dev python-setuptools python-numpy python-scipy zlib1g-dev python-matplotlib python-nose 
 RUN easy_install pip
