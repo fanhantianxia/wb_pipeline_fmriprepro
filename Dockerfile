@@ -18,7 +18,7 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-url="https://github.com/poldracklab/fmriprep" \
       org.label-schema.version=$VERSION \
       org.label-schema.schema-version="1.0"
-RUN /usr/local/miniconda/bin/fmriprep --version
+RUN /usr/local/miniconda/bin/fmriprep fmriprep --version
 
 RUN apt-get update && apt-get install -y python-dev python-setuptools python-numpy python-scipy zlib1g-dev python-matplotlib python-nose 
 RUN easy_install pip
