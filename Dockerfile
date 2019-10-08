@@ -1,5 +1,5 @@
-#FROM daocloud.io/fanhan/wb_fmriprepro_basis:master-dcb3599
-FROM daocloud.io/fanhan/wb_fmriprepro_basis:master-560f8d4
+FROM daocloud.io/fanhan/wb_fmriprepro_basis:master-dcb3599
+#FROM daocloud.io/fanhan/wb_fmriprepro_basis:master-560f8d4
 #FROM poldracklab/fmriprep:latest
 #FROM daocloud.io/fanhan/wb_fmriprep
 MAINTAINER Yufan Zhang <zyf15816794709@163.com>
