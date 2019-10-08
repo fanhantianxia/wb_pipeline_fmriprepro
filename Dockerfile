@@ -1,10 +1,12 @@
 FROM daocloud.io/fanhan/wb_fmriprepro_basis:master-560f8d4
+#FROM poldracklab/fmriprep:latest
 #FROM daocloud.io/fanhan/wb_fmriprep
 MAINTAINER Yufan Zhang <zyf15816794709@163.com>
 
 RUN ldconfig
 WORKDIR /tmp/
-ENTRYPOINT ["/usr/local/miniconda/bin/fmriprep"] 
+#ENTRYPOINT ["/usr/local/miniconda/bin/fmriprep"] 
+CMD ["/usr/local/miniconda/bin/fmriprep","--version"]
 ARG BUILD_DATE
 ARG VCS_REF
 ARG VERSION
