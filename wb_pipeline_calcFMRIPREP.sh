@@ -23,7 +23,7 @@ echo 'Check all inputs......'
 
 /usr/local/miniconda/bin/fmriprep --version
 
-:<<!
+
 if test -z "$preprocessing_options" 
    then
    preprocessing_options_content=
@@ -75,6 +75,8 @@ echo 'Surface_preprocessing_options_content='$Surface_preprocessing_options_cont
 #display parameters
 echo 'Start Project......'
 echo 'Project ID:'$combs_project_id
+
+:<<!
 
 #loading data and calculating
 echo 'loading data and calculating......'
