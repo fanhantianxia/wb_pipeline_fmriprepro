@@ -1,15 +1,8 @@
-#FROM daocloud.io/fanhan/wb_fmriprepro_basis:master-2dceb02
-#FROM daocloud.io/fanhan/wb_fmriprepro_basis:master-560f8d4
 #FROM poldracklab/fmriprep:latest
-FROM daocloud.io/fanhan/wbhub_fmriprepro_basis:1.5.1rc2
-#FROM daocloud.io/fanhan/wb_fmriprep
+FROM zhangyufan/wb_pipeline_fmriprepro_basis:latest
+
 MAINTAINER Yufan Zhang <zyf15816794709@163.com>
 
-#RUN ldconfig
-#WORKDIR /tmp/
-#ENTRYPOINT ["/usr/local/miniconda/bin/fmriprep"] 
-#CMD ["/usr/local/miniconda/bin/fmriprep","--version"]
-#RUN /usr/local/miniconda/bin/fmriprep
 RUN fmriprep --version
 
 RUN apt-get update && apt-get install -y python-dev python-setuptools python-numpy python-scipy zlib1g-dev python-matplotlib python-nose 
