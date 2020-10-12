@@ -1,5 +1,5 @@
-#FROM poldracklab/fmriprep:latest
-FROM zhangyufan/wb_pipeline_fmriprepro_basis:latest
+FROM poldracklab/fmriprep:latest
+#FROM zhangyufan/wb_pipeline_fmriprepro_basis:latest
 
 MAINTAINER Yufan Zhang <zyf15816794709@163.com>
 
