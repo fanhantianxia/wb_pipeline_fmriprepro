@@ -46,6 +46,9 @@ ADD wb_pipeline_calcFCD.sh /root/wb_pipeline_calcFCD.sh
 ADD wb_pipeline_calcFOCA.sh /root/wb_pipeline_calcFOCA.sh
 ADD wb_pipeline_calcFMRIPREP.sh /root/wb_pipeline_calcFMRIPREP.sh
 ADD wb_pipeline_calcALL.sh /root/wb_pipeline_calcALL.sh
+ADD wb_pipeline_fmriprepro.sh /root/wb_pipeline_fmriprepro.sh
 
 RUN chmod 777 -R /root/
 RUN rm -rf /script
+
+ENTRYPOINT ["/root/wb_pipeline_fmriprepro.sh"]
