@@ -1,6 +1,6 @@
 #!/bin/bash
 mode=$1  
-
+echo '********test********'
 if test mode = "wb_pipeline_calcFCD"
 	then
 	./wb_pipeline_calcFCD.sh $2 $3 $4 $5 $6 $7 $8
