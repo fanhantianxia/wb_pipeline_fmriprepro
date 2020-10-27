@@ -53,4 +53,6 @@ RUN rm -rf /script
 
 WORKDIR /root/
 RUN ls
+RUN chmod a+x /root/wb_pipeline_fmriprepro.sh
 ENTRYPOINT ["/root/wb_pipeline_fmriprepro.sh"]
+
