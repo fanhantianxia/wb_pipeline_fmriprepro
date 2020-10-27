@@ -51,4 +51,6 @@ ADD wb_pipeline_fmriprepro.sh /root/wb_pipeline_fmriprepro.sh
 RUN chmod 777 -R /root/
 RUN rm -rf /script
 
+WORKDIR /root/
+RUN ls
 #ENTRYPOINT ["/root/wb_pipeline_fmriprepro.sh"]
