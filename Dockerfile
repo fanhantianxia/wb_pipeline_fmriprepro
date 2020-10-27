@@ -53,4 +53,4 @@ RUN rm -rf /script
 
 WORKDIR /root/
 RUN ls
-#ENTRYPOINT ["/root/wb_pipeline_fmriprepro.sh"]
+ENTRYPOINT ["/root/wb_pipeline_fmriprepro.sh"]
